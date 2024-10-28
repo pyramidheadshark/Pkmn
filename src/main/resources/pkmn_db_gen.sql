@@ -12,7 +12,7 @@ CREATE TABLE card (
     hp INT2,
     evolves_from UUID REFERENCES card(id),
     game_set TEXT,
-    card_number INT2 NOT NULL,
+    card_number TEXT NOT NULL,
     pokemon_owner UUID REFERENCES student(id),
     stage TEXT NOT NULL,
     retreat_cost TEXT,
