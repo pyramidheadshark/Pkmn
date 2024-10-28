@@ -62,6 +62,9 @@ public class CardImport
             } else {
                 card.setPokemonOwner(null);
             }
+
+            String number = reader.readLine().trim();
+            card.setNumber(number);
         } catch (IOException e) {
             e.printStackTrace();
         }

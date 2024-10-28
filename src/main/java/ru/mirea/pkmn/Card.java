@@ -19,6 +19,7 @@ public class Card implements Serializable {
     private String gameSet;
     private char regulationMark;
     private Student pokemonOwner;
+    private String number;
 
     public Card() {}
 
@@ -29,7 +30,7 @@ public class Card implements Serializable {
     public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType,
                 Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType,
                 EnergyType resistanceType, String retreatCost, String gameSet,
-                char regulationMark, Student pokemonOwner) {
+                char regulationMark, Student pokemonOwner, String number) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
@@ -42,6 +43,7 @@ public class Card implements Serializable {
         this.gameSet = gameSet;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
+        this.number = number;
     }
 
     public PokemonStage getPokemonStage() {
@@ -80,6 +82,9 @@ public class Card implements Serializable {
     public Student getPokemonOwner() {
         return pokemonOwner;
     }
+    public String getNumber() {
+        return number;
+    }
 
     public void setPokemonStage(PokemonStage pokemonStage) {
         this.pokemonStage = pokemonStage;
@@ -117,6 +122,9 @@ public class Card implements Serializable {
     public void setPokemonOwner(Student pokemonOwner) {
         this.pokemonOwner = pokemonOwner;
     }
+    public void setNumber(String number) {
+        this.number = number;
+    }
 
     @Override
     public String toString() {
@@ -124,7 +132,7 @@ public class Card implements Serializable {
         String weaknessTypeStr = weaknessType != null ? weaknessType.toString() : "нету";
         String resistanceTypeStr = resistanceType != null ? resistanceType.toString() : "нету";
         String skillsStr = skills.stream()
-                .map(skill -> String.format("%s; %s; %d", skill.getName(), skill.getCost(), skill.getDamage()))
+                .map(skill -> String.format("%s; %s; %d; %s", skill.getName(), skill.getCost(), skill.getDamage(), skill.getDescription()))
                 .collect(Collectors.joining("; "));
 
         return String.format("""
@@ -140,6 +148,7 @@ public class Card implements Serializable {
     Название сета: %s
     Отметка: %s
     Владелец: %s
+    Номер: %s
     """,
                 name,
                 pokemonStage,
@@ -152,6 +161,7 @@ public class Card implements Serializable {
                 retreatCost,
                 gameSet,
                 regulationMark,
-                pokemonOwner);
+                pokemonOwner,
+                number);
     }
 }

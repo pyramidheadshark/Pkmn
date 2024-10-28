@@ -45,6 +45,6 @@ public class AttackSkill implements Serializable{
 
     @Override
     public String toString() {
-        return String.format("%s; %s; %d DMG", name, cost, damage);
+        return String.format("%s; %s; %d DMG; %s", name, cost, damage, description);
     }
 }

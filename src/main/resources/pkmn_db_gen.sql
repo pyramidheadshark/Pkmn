@@ -22,3 +22,6 @@ CREATE TABLE card (
     pokemon_type TEXT NOT NULL,
     regulation_mark CHAR(1) NOT NULL
 );
+
+CREATE ROLE pkmn_user WITH LOGIN PASSWORD 'pkmn_user';
+GRANT SELECT, INSERT ON TABLE card, student TO pkmn_user;

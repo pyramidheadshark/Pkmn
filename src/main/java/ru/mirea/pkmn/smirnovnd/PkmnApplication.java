@@ -10,25 +10,28 @@ import java.util.stream.Collectors;
 public class PkmnApplication
 {
     public static void main(String[] args) throws IOException {
-        /*
         CardImport cardImport = new CardImport();
-        Card myCard = cardImport.readFromFile("src/main/resources/Blipbug.txt");
-        System.out.printf("\u001b[38;5;186m\nНачало задачи:\u001b[38;5;0m\n");
-        //System.out.printf(myCard.toString());
 
-        CardExport.ExportToFile(myCard);
-        myCard = cardImport.importFromFile("Dottler.crd");
-        System.out.printf(myCard.toString());
-        */
+        Card myCard1 = cardImport.readFromFile("src/main/resources/Blipbug.txt");
+        CardExport.ExportToFile(myCard1);
+        Card myCard2 = cardImport.readFromFile("src/main/resources/Dottler.txt");
+        CardExport.ExportToFile(myCard2);
+        Card myCard3 = cardImport.readFromFile("src/main/resources/Orbeetle.txt");
+        CardExport.ExportToFile(myCard3);
+
+        Card blipbug = cardImport.importFromFile("Blipbug.crd");
+        Card dottler = cardImport.importFromFile("Dottler.crd");
+        Card orbeetle = cardImport.importFromFile("Orbeetle.crd");
 
         PkmnHttpClient pkmnHttpClient = new PkmnHttpClient();
 
-        JsonNode card = pkmnHttpClient.getPokemonCard("Pikachu V", 86);
-        System.out.println(card.toPrettyString());
-
-        System.out.println(card.findValues("attacks")
-                .stream()
-                .map(JsonNode::toPrettyString)
-                .collect(Collectors.toSet()));
+        JsonNode jsonNode = pkmnHttpClient.getPokemonCard(dottler.getName(), dottler.getNumber());
+        if (jsonNode != null) {
+            JsonPrinter.printCardData(jsonNode);
+            JsonCardSkillUpdater.updateSkillDescriptions(dottler, jsonNode);
+            CardExport.ExportToFile(dottler);
+            dottler = cardImport.importFromFile("Dottler.crd");
+            System.out.println(dottler.getSkills());
+        }
     }
 }

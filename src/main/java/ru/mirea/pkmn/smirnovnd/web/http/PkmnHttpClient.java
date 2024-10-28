@@ -20,11 +20,17 @@ public class PkmnHttpClient {
         tcgAPI = client.create(PokemonTcgAPI.class);
     }
 
-    public JsonNode getPokemonCard(String name, int id) throws IOException {
-        String requestQuery = "name:\""+name+"\"" + " " + "number:"+id;
+    public JsonNode getPokemonCard(String name, String id) throws IOException {
+        String requestQuery = "name:\"" + name + "\"" + " number:" + id;
 
         Response<JsonNode> response = tcgAPI.getPokemon(requestQuery).execute();
 
-        return response.body();
+        if (response.isSuccessful()) { //Проверка успешного выполнения запроса
+            return response.body();
+        } else {
+            //Обработка ошибок
+            System.err.println("Ошибка при запросе к API: " + response.code() + " " + response.message());
+            return null; //Или выбросить исключение
+        }
     }
 }
