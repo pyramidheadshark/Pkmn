@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  postgres:
+    build: ./postgres
+    environment:
+      POSTGRES_PASSWORD: pkmn_pass
+      POSTGRES_DB: pkmn_db
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+  app:
+    build: ./app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./app/target/my-app.jar:/app/my-app.jar
+    depends_on:
+      - postgres
+      - redis
+  redis:
+    build: ./redis
+  tomcat:
+    build: ./tomcat
+    ports:
+      - "8081:8080"
+    depends_on:
+      - app
