@@ -1,0 +1,767 @@
+{
+  "_children": {
+    "data": {
+      "_children": [
+        {
+          "_children": {
+            "id": {
+              "_value": "swsh4-20"
+            },
+            "name": {
+              "_value": "Orbeetle V"
+            },
+            "supertype": {
+              "_value": "Pokémon"
+            },
+            "subtypes": {
+              "_children": [
+                {
+                  "_value": "Basic"
+                },
+                {
+                  "_value": "V"
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "hp": {
+              "_value": "180"
+            },
+            "types": {
+              "_children": [
+                {
+                  "_value": "Grass"
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "rules": {
+              "_children": [
+                {
+                  "_value": "V rule: When your Pokémon V is Knocked Out, your opponent takes 2 Prize cards."
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "attacks": {
+              "_children": [
+                {
+                  "_children": {
+                    "name": {
+                      "_value": "Strafe"
+                    },
+                    "cost": {
+                      "_children": [
+                        {
+                          "_value": "Grass"
+                        }
+                      ],
+                      "_nodeFactory": {
+                        "_cfgBigDecimalExact": false
+                      }
+                    },
+                    "convertedEnergyCost": {
+                      "_value": 1
+                    },
+                    "damage": {
+                      "_value": "20"
+                    },
+                    "text": {
+                      "_value": "You may switch this Pokémon with 1 of your Benched Pokémon."
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                },
+                {
+                  "_children": {
+                    "name": {
+                      "_value": "Mysterious Wave"
+                    },
+                    "cost": {
+                      "_children": [
+                        {
+                          "_value": "Grass"
+                        },
+                        {
+                          "_value": "Colorless"
+                        }
+                      ],
+                      "_nodeFactory": {
+                        "_cfgBigDecimalExact": false
+                      }
+                    },
+                    "convertedEnergyCost": {
+                      "_value": 2
+                    },
+                    "damage": {
+                      "_value": "50+"
+                    },
+                    "text": {
+                      "_value": "This attack does 30 more damage for each Energy attached to your opponent\u0027s Active Pokémon."
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "weaknesses": {
+              "_children": [
+                {
+                  "_children": {
+                    "type": {
+                      "_value": "Fire"
+                    },
+                    "value": {
+                      "_value": "×2"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "retreatCost": {
+              "_children": [
+                {
+                  "_value": "Colorless"
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "convertedRetreatCost": {
+              "_value": 1
+            },
+            "set": {
+              "_children": {
+                "id": {
+                  "_value": "swsh4"
+                },
+                "name": {
+                  "_value": "Vivid Voltage"
+                },
+                "series": {
+                  "_value": "Sword \u0026 Shield"
+                },
+                "printedTotal": {
+                  "_value": 185
+                },
+                "total": {
+                  "_value": 203
+                },
+                "legalities": {
+                  "_children": {
+                    "unlimited": {
+                      "_value": "Legal"
+                    },
+                    "expanded": {
+                      "_value": "Legal"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                },
+                "ptcgoCode": {
+                  "_value": "VIV"
+                },
+                "releaseDate": {
+                  "_value": "2020/11/13"
+                },
+                "updatedAt": {
+                  "_value": "2020/11/13 16:20:00"
+                },
+                "images": {
+                  "_children": {
+                    "symbol": {
+                      "_value": "https://images.pokemontcg.io/swsh4/symbol.png"
+                    },
+                    "logo": {
+                      "_value": "https://images.pokemontcg.io/swsh4/logo.png"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "number": {
+              "_value": "20"
+            },
+            "artist": {
+              "_value": "5ban Graphics"
+            },
+            "rarity": {
+              "_value": "Rare Holo V"
+            },
+            "nationalPokedexNumbers": {
+              "_children": [
+                {
+                  "_value": 826
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "legalities": {
+              "_children": {
+                "unlimited": {
+                  "_value": "Legal"
+                },
+                "expanded": {
+                  "_value": "Legal"
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "regulationMark": {
+              "_value": "D"
+            },
+            "images": {
+              "_children": {
+                "small": {
+                  "_value": "https://images.pokemontcg.io/swsh4/20.png"
+                },
+                "large": {
+                  "_value": "https://images.pokemontcg.io/swsh4/20_hires.png"
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "tcgplayer": {
+              "_children": {
+                "url": {
+                  "_value": "https://prices.pokemontcg.io/tcgplayer/swsh4-20"
+                },
+                "updatedAt": {
+                  "_value": "2024/11/24"
+                },
+                "prices": {
+                  "_children": {
+                    "holofoil": {
+                      "_children": {
+                        "low": {
+                          "_value": 0.1
+                        },
+                        "mid": {
+                          "_value": 0.75
+                        },
+                        "high": {
+                          "_value": 9.95
+                        },
+                        "market": {
+                          "_value": 0.39
+                        },
+                        "directLow": {
+                          "_value": 0.39
+                        }
+                      },
+                      "_nodeFactory": {
+                        "_cfgBigDecimalExact": false
+                      }
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "cardmarket": {
+              "_children": {
+                "url": {
+                  "_value": "https://prices.pokemontcg.io/cardmarket/swsh4-20"
+                },
+                "updatedAt": {
+                  "_value": "2024/11/24"
+                },
+                "prices": {
+                  "_children": {
+                    "averageSellPrice": {
+                      "_value": 0.71
+                    },
+                    "lowPrice": {
+                      "_value": 0.15
+                    },
+                    "trendPrice": {
+                      "_value": 0.61
+                    },
+                    "germanProLow": {
+                      "_value": 0.0
+                    },
+                    "suggestedPrice": {
+                      "_value": 0.0
+                    },
+                    "reverseHoloSell": {
+                      "_value": 0.0
+                    },
+                    "reverseHoloLow": {
+                      "_value": 0.0
+                    },
+                    "reverseHoloTrend": {
+                      "_value": 1.21
+                    },
+                    "lowPriceExPlus": {
+                      "_value": 0.2
+                    },
+                    "avg1": {
+                      "_value": 0.7
+                    },
+                    "avg7": {
+                      "_value": 0.54
+                    },
+                    "avg30": {
+                      "_value": 0.69
+                    },
+                    "reverseHoloAvg1": {
+                      "_value": 1.29
+                    },
+                    "reverseHoloAvg7": {
+                      "_value": 1.24
+                    },
+                    "reverseHoloAvg30": {
+                      "_value": 1.36
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            }
+          },
+          "_nodeFactory": {
+            "_cfgBigDecimalExact": false
+          }
+        },
+        {
+          "_children": {
+            "id": {
+              "_value": "swsh11-20"
+            },
+            "name": {
+              "_value": "Orbeetle"
+            },
+            "supertype": {
+              "_value": "Pokémon"
+            },
+            "subtypes": {
+              "_children": [
+                {
+                  "_value": "Stage 2"
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "hp": {
+              "_value": "110"
+            },
+            "types": {
+              "_children": [
+                {
+                  "_value": "Grass"
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "evolvesFrom": {
+              "_value": "Dottler"
+            },
+            "abilities": {
+              "_children": [
+                {
+                  "_children": {
+                    "name": {
+                      "_value": "Jamming Attachment"
+                    },
+                    "text": {
+                      "_value": "When you play this Pokémon from your hand to evolve 1 of your Pokémon during your turn, you may attach up to 3 Energy cards from your opponent\u0027s discard pile to your opponent\u0027s Pokémon in any way you like."
+                    },
+                    "type": {
+                      "_value": "Ability"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "attacks": {
+              "_children": [
+                {
+                  "_children": {
+                    "name": {
+                      "_value": "Mysterious Wave"
+                    },
+                    "cost": {
+                      "_children": [
+                        {
+                          "_value": "Colorless"
+                        },
+                        {
+                          "_value": "Colorless"
+                        }
+                      ],
+                      "_nodeFactory": {
+                        "_cfgBigDecimalExact": false
+                      }
+                    },
+                    "convertedEnergyCost": {
+                      "_value": 2
+                    },
+                    "damage": {
+                      "_value": "30+"
+                    },
+                    "text": {
+                      "_value": "This attack does 50 more damage for each Energy attached to your opponent\u0027s Active Pokémon."
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "weaknesses": {
+              "_children": [
+                {
+                  "_children": {
+                    "type": {
+                      "_value": "Fire"
+                    },
+                    "value": {
+                      "_value": "×2"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "retreatCost": {
+              "_children": [
+                {
+                  "_value": "Colorless"
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "convertedRetreatCost": {
+              "_value": 1
+            },
+            "set": {
+              "_children": {
+                "id": {
+                  "_value": "swsh11"
+                },
+                "name": {
+                  "_value": "Lost Origin"
+                },
+                "series": {
+                  "_value": "Sword \u0026 Shield"
+                },
+                "printedTotal": {
+                  "_value": 196
+                },
+                "total": {
+                  "_value": 217
+                },
+                "legalities": {
+                  "_children": {
+                    "unlimited": {
+                      "_value": "Legal"
+                    },
+                    "standard": {
+                      "_value": "Legal"
+                    },
+                    "expanded": {
+                      "_value": "Legal"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                },
+                "ptcgoCode": {
+                  "_value": "LOR"
+                },
+                "releaseDate": {
+                  "_value": "2022/09/09"
+                },
+                "updatedAt": {
+                  "_value": "2022/09/09 13:45:00"
+                },
+                "images": {
+                  "_children": {
+                    "symbol": {
+                      "_value": "https://images.pokemontcg.io/swsh11/symbol.png"
+                    },
+                    "logo": {
+                      "_value": "https://images.pokemontcg.io/swsh11/logo.png"
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "number": {
+              "_value": "20"
+            },
+            "artist": {
+              "_value": "yuu"
+            },
+            "rarity": {
+              "_value": "Rare Holo"
+            },
+            "flavorText": {
+              "_value": "It\u0027s famous for its high level of intelligence, and the large size of its brain is proof that it also possesses immense psychic power."
+            },
+            "nationalPokedexNumbers": {
+              "_children": [
+                {
+                  "_value": 826
+                }
+              ],
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "legalities": {
+              "_children": {
+                "unlimited": {
+                  "_value": "Legal"
+                },
+                "standard": {
+                  "_value": "Legal"
+                },
+                "expanded": {
+                  "_value": "Legal"
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "regulationMark": {
+              "_value": "F"
+            },
+            "images": {
+              "_children": {
+                "small": {
+                  "_value": "https://images.pokemontcg.io/swsh11/20.png"
+                },
+                "large": {
+                  "_value": "https://images.pokemontcg.io/swsh11/20_hires.png"
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "tcgplayer": {
+              "_children": {
+                "url": {
+                  "_value": "https://prices.pokemontcg.io/tcgplayer/swsh11-20"
+                },
+                "updatedAt": {
+                  "_value": "2024/11/24"
+                },
+                "prices": {
+                  "_children": {
+                    "reverseHolofoil": {
+                      "_children": {
+                        "low": {
+                          "_value": 0.05
+                        },
+                        "mid": {
+                          "_value": 0.23
+                        },
+                        "high": {
+                          "_value": 3.95
+                        },
+                        "market": {
+                          "_value": 0.18
+                        },
+                        "directLow": {}
+                      },
+                      "_nodeFactory": {
+                        "_cfgBigDecimalExact": false
+                      }
+                    },
+                    "holofoil": {
+                      "_children": {
+                        "low": {
+                          "_value": 0.02
+                        },
+                        "mid": {
+                          "_value": 0.19
+                        },
+                        "high": {
+                          "_value": 3.95
+                        },
+                        "market": {
+                          "_value": 0.1
+                        },
+                        "directLow": {}
+                      },
+                      "_nodeFactory": {
+                        "_cfgBigDecimalExact": false
+                      }
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            },
+            "cardmarket": {
+              "_children": {
+                "url": {
+                  "_value": "https://prices.pokemontcg.io/cardmarket/swsh11-20"
+                },
+                "updatedAt": {
+                  "_value": "2024/11/24"
+                },
+                "prices": {
+                  "_children": {
+                    "averageSellPrice": {
+                      "_value": 0.26
+                    },
+                    "lowPrice": {
+                      "_value": 0.02
+                    },
+                    "trendPrice": {
+                      "_value": 0.2
+                    },
+                    "germanProLow": {
+                      "_value": 0.0
+                    },
+                    "suggestedPrice": {
+                      "_value": 0.0
+                    },
+                    "reverseHoloSell": {
+                      "_value": 0.25
+                    },
+                    "reverseHoloLow": {
+                      "_value": 0.03
+                    },
+                    "reverseHoloTrend": {
+                      "_value": 0.3
+                    },
+                    "lowPriceExPlus": {
+                      "_value": 0.02
+                    },
+                    "avg1": {
+                      "_value": 0.1
+                    },
+                    "avg7": {
+                      "_value": 0.2
+                    },
+                    "avg30": {
+                      "_value": 0.21
+                    },
+                    "reverseHoloAvg1": {
+                      "_value": 0.25
+                    },
+                    "reverseHoloAvg7": {
+                      "_value": 0.35
+                    },
+                    "reverseHoloAvg30": {
+                      "_value": 0.25
+                    }
+                  },
+                  "_nodeFactory": {
+                    "_cfgBigDecimalExact": false
+                  }
+                }
+              },
+              "_nodeFactory": {
+                "_cfgBigDecimalExact": false
+              }
+            }
+          },
+          "_nodeFactory": {
+            "_cfgBigDecimalExact": false
+          }
+        }
+      ],
+      "_nodeFactory": {
+        "_cfgBigDecimalExact": false
+      }
+    },
+    "page": {
+      "_value": 1
+    },
+    "pageSize": {
+      "_value": 250
+    },
+    "count": {
+      "_value": 2
+    },
+    "totalCount": {
+      "_value": 2
+    }
+  },
+  "_nodeFactory": {
+    "_cfgBigDecimalExact": false
+  }
+}

@@ -1,50 +1,63 @@
 package ru.mirea.pkmn;
 
+import java.io.Serial;
 import java.io.Serializable;
 
-public class AttackSkill implements Serializable{
-    private static final long serialVersionUID = 1L;
-
+public class AttackSkill implements Serializable {
     private String name;
     private String description;
     private String cost;
     private int damage;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-    public AttackSkill(String name, String description, String cost, int damage) {
+    public AttackSkill(String name, String description, String cost, int damage)
+    {
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.damage = damage;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
-    public String getDescription() {
-        return description;
-    }
-    public String getCost() {
-        return cost;
-    }
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
-    public void setDescription(String description) {
+
+    public String getDescription()
+    {
+        return description;
+    }
+    public void setDescription(String description)
+    {
         this.description = description;
     }
-    public void setCost(String cost) {
+
+    public String getCost()
+    {
+        return cost;
+    }
+    public void setCost(String cost)
+    {
         this.cost = cost;
     }
-    public void setDamage(int damage) {
+
+    public int getDamage()
+    {
+        return damage;
+    }
+    public void setDamage(int damage)
+    {
         this.damage = damage;
     }
 
     @Override
-    public String toString() {
-        return String.format("%s; %s; %d DMG; %s", name, cost, damage, description);
+    public String toString()
+    {
+        return  cost + "/" + description + "/" + name + "/" + damage;
     }
 }

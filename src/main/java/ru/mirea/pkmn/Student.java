@@ -1,56 +1,68 @@
 package ru.mirea.pkmn;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Student implements Serializable {
-    public static final long serialVersionUID = 1L;
-
     private String firstName;
     private String surName;
     private String familyName;
     private String group;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
-    public Student() {}
+    public Student()
+    {
 
-    public Student(String firstName, String surName, String familyName, String group) {
+    }
+
+    public Student(String firstName, String surName, String familyName, String group)
+    {
         this.firstName = firstName;
         this.surName = surName;
         this.familyName = familyName;
         this.group = group;
     }
 
-    public String getFirstName() {
+    public String getFirstName()
+    {
         return firstName;
     }
-    public String getSurName() {
-        return surName;
-    }
-    public String getFamilyName() {
-        return familyName;
-    }
-    public String getGroup() {
-        return group;
-    }
-
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName)
+    {
         this.firstName = firstName;
     }
-    public void setSurName(String surName) {
+
+    public String getSurName()
+    {
+        return surName;
+    }
+    public void setSurName(String surName)
+    {
         this.surName = surName;
     }
-    public void setFamilyName(String familyName) {
+
+    public String getFamilyName()
+    {
+        return familyName;
+    }
+    public void setFamilyName(String familyName)
+    {
         this.familyName = familyName;
     }
-    public void setGroup(String group) {
-        this.group = group;
-    }
 
-    public String getFullName() {
-        return firstName + " " + surName + " " + familyName;
+    public String getGroup()
+    {
+        return group;
+    }
+    public void setGroup(String group)
+    {
+        this.group = group;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return firstName + "/" + surName + "/" + familyName + "/" + group;
     }
 }

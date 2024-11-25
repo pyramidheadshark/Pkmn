@@ -1,11 +1,11 @@
 package ru.mirea.pkmn;
 
 public enum PokemonStage {
-    Basic("Basic"),
-    Stage1("Stage1"),
-    Stage2("Stage2"),
-    Vstar("Vstar"),
-    Vmax("Vmax");
+    BASIC("BASIC"),
+    STAGE1("STAGE1"),
+    STAGE2("STAGE2"),
+    VSTAR("VSTAR"),
+    VMAX("VMAX");
 
     private final String pokemonStage;
 
