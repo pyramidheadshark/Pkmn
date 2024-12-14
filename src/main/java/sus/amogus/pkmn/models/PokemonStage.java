@@ -1,5 +1,8 @@
 package sus.amogus.pkmn.models;
 
+import lombok.Getter;
+
+@Getter
 public enum PokemonStage {
     BASIC("BASIC"),
     STAGE1("STAGE1"),
@@ -14,8 +17,4 @@ public enum PokemonStage {
         this.pokemonStage = pokemonStage;
     }
 
-    public String getPokemonStage()
-    {
-        return pokemonStage;
-    }
 }

@@ -1,9 +1,14 @@
 package sus.amogus.pkmn.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
+@Setter
+@Getter
 public class Card implements Serializable {
     private PokemonStage pokemonStage;
     private String name;
@@ -50,121 +55,6 @@ public class Card implements Serializable {
         this.number=number;
     }
 
-    public PokemonStage getPokemonStage()
-    {
-        return pokemonStage;
-    }
-    public void setPokemonStage(PokemonStage pokemonStage)
-    {
-        this.pokemonStage = pokemonStage;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public int getHp()
-    {
-        return hp;
-    }
-    public void setHp(int hp)
-    {
-        this.hp = hp;
-    }
-
-    public EnergyType getPokemonType()
-    {
-        return pokemonType;
-    }
-    public void setPokemonType(EnergyType pokemonType)
-    {
-        this.pokemonType = pokemonType;
-    }
-
-    public Card getEvolvesFrom()
-    {
-        return evolvesFrom;
-    }
-    public void setEvolvesFrom(Card evolvesFrom)
-    {
-        this.evolvesFrom = evolvesFrom;
-    }
-
-    public List<AttackSkill> getSkills()
-    {
-        return skills;
-    }
-    public void setSkills(List<AttackSkill> skills)
-    {
-        this.skills = skills;
-    }
-
-    public EnergyType getWeaknessType()
-    {
-        return weaknessType;
-    }
-    public void setWeaknessType(EnergyType weaknessType)
-    {
-        this.weaknessType = weaknessType;
-    }
-
-    public EnergyType getResistanceType()
-    {
-        return resistanceType;
-    }
-    public void setResistanceType(EnergyType resistanceType)
-    {
-        this.resistanceType = resistanceType;
-    }
-
-    public String getRetreatCost()
-    {
-        return retreatCost;
-    }
-    public void setRetreatCost(String retreatCost)
-    {
-        this.retreatCost = retreatCost;
-    }
-
-    public String getGameSet()
-    {
-        return gameSet;
-    }
-    public void setGameSet(String gameSet)
-    {
-        this.gameSet = gameSet;
-    }
-
-    public char getRegulationMark()
-    {
-        return regulationMark;
-    }
-    public void setRegulationMark(char regulationMark)
-    {
-        this.regulationMark = regulationMark;
-    }
-
-    public Student getPokemonOwner()
-    {
-        return pokemonOwner;
-    }
-    public void setPokemonOwner(Student pokemonOwner)
-    {
-        this.pokemonOwner = pokemonOwner;
-    }
-
-    public String getNumber()
-    {
-        return number;
-    }
-    public void setNumber(String number) {
-        this.number = number;
-    }
     @Override
     public String toString() {
         return String.format("\u001b[38;5;111m%s pokemon:\u001b[38;5;15m \n" +

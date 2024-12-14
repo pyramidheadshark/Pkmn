@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class CardImport
 {
     Card card = new Card();

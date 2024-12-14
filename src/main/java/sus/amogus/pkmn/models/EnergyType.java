@@ -1,5 +1,8 @@
 package sus.amogus.pkmn.models;
 
+import lombok.Getter;
+
+@Getter
 public enum EnergyType {
     FIRE("FIRE"),
     GRASS("GRASS"),
@@ -20,8 +23,4 @@ public enum EnergyType {
         this.energyType = energyType;
     }
 
-    public String getEnergyType()
-    {
-        return energyType;
-    }
 }

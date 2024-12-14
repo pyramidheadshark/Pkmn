@@ -1,8 +1,13 @@
 package sus.amogus.pkmn.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 
+@Setter
+@Getter
 public class Student implements Serializable {
     private String firstName;
     private String surName;
@@ -21,42 +26,6 @@ public class Student implements Serializable {
         this.firstName = firstName;
         this.surName = surName;
         this.familyName = familyName;
-        this.group = group;
-    }
-
-    public String getFirstName()
-    {
-        return firstName;
-    }
-    public void setFirstName(String firstName)
-    {
-        this.firstName = firstName;
-    }
-
-    public String getSurName()
-    {
-        return surName;
-    }
-    public void setSurName(String surName)
-    {
-        this.surName = surName;
-    }
-
-    public String getFamilyName()
-    {
-        return familyName;
-    }
-    public void setFamilyName(String familyName)
-    {
-        this.familyName = familyName;
-    }
-
-    public String getGroup()
-    {
-        return group;
-    }
-    public void setGroup(String group)
-    {
         this.group = group;
     }
 
