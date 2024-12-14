@@ -34,4 +34,6 @@ public class Student implements Serializable {
     {
         return firstName + "/" + surName + "/" + familyName + "/" + group;
     }
+
+    public String getFatherName() { return familyName; }
 }
