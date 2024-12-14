@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.smirnovnd.web.http;
+package sus.amogus.pkmn.models.web.http;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.json.JsonMapper;

@@ -1,4 +1,4 @@
-package ru.mirea.pkmn;
+package sus.amogus.pkmn.models;
 
 public enum EnergyType {
     FIRE("FIRE"),

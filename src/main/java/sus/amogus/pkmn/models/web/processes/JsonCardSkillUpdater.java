@@ -1,8 +1,8 @@
-package ru.mirea.pkmn.smirnovnd;
+package sus.amogus.pkmn.models.web.processes;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import ru.mirea.pkmn.Card;
-import ru.mirea.pkmn.AttackSkill;
+import sus.amogus.pkmn.models.Card;
+import sus.amogus.pkmn.models.AttackSkill;
 
 import java.util.List;
 

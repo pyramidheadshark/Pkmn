@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.smirnovnd;
+package sus.amogus.pkmn.models;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,13 +6,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import ru.mirea.pkmn.Card;
-import ru.mirea.pkmn.smirnovnd.web.http.PkmnHttpClient;
-import ru.mirea.pkmn.smirnovnd.web.jdbc.DatabaseServiceImpl;
+import sus.amogus.pkmn.models.web.processes.CardImport;
+import sus.amogus.pkmn.models.web.http.PkmnHttpClient;
+import sus.amogus.pkmn.models.web.jdbc.DatabaseServiceImpl;
 
 import java.sql.SQLException;
 
-public class PkmnApplication
+public class PkmnApplicationOld
 {
     static PkmnHttpClient pkmnHttpClient = new PkmnHttpClient();
     public static void main(String[] args) throws IOException, SQLException {

@@ -1,6 +1,6 @@
-package ru.mirea.pkmn.smirnovnd;
+package sus.amogus.pkmn.models.web.processes;
 
-import ru.mirea.pkmn.Card;
+import sus.amogus.pkmn.models.Card;
 
 import java.io.*;
 

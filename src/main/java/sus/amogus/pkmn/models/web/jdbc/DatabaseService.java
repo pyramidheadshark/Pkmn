@@ -1,7 +1,7 @@
-package ru.mirea.pkmn.smirnovnd.web.jdbc;
+package sus.amogus.pkmn.models.web.jdbc;
 
-import ru.mirea.pkmn.Card;
-import ru.mirea.pkmn.Student;
+import sus.amogus.pkmn.models.Card;
+import sus.amogus.pkmn.models.Student;
 
 public interface DatabaseService {
     Card getCardFromDatabase(String cardName);

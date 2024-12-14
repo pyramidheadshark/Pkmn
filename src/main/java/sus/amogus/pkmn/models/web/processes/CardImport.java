@@ -1,8 +1,8 @@
-package ru.mirea.pkmn.smirnovnd;
+package sus.amogus.pkmn.models.web.processes;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import ru.mirea.pkmn.*;
-import ru.mirea.pkmn.smirnovnd.web.http.PkmnHttpClient;
+import sus.amogus.pkmn.models.*;
+import sus.amogus.pkmn.models.web.http.PkmnHttpClient;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,10 +1,10 @@
-package ru.mirea.pkmn.smirnovnd.web.jdbc;
+package sus.amogus.pkmn.models.web.jdbc;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import ru.mirea.pkmn.*;
+import sus.amogus.pkmn.models.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;

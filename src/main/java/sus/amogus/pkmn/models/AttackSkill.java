@@ -1,4 +1,4 @@
-package ru.mirea.pkmn;
+package sus.amogus.pkmn.models;
 
 import java.io.Serial;
 import java.io.Serializable;

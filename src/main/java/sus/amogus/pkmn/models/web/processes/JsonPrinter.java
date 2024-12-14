@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.smirnovnd;
+package sus.amogus.pkmn.models.web.processes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
