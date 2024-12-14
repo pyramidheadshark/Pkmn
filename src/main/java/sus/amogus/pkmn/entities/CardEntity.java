@@ -11,9 +11,8 @@ import org.hibernate.annotations.JdbcTypeCode;
 import sus.amogus.pkmn.models.PokemonStage;
 import sus.amogus.pkmn.models.AttackSkill;
 
-
-
 import static org.hibernate.type.SqlTypes.JSON;
+
 
 @Entity
 @Table(name = "cards")
@@ -24,52 +23,52 @@ import static org.hibernate.type.SqlTypes.JSON;
 public class CardEntity implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = 1L;
+    public static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    public UUID id;
 
     @Column(name="name")
-    private String name;
+    public String name;
 
     @Column(columnDefinition = "smallint")
-    private short hp;
+    public short hp;
 
     @Column(name="cardNumber")
-    private String cardNumber;
+    public String cardNumber;
 
     @Enumerated(EnumType.STRING)
     @Column(name="stage")
-    private PokemonStage pokemonStage;
+    public PokemonStage pokemonStage;
 
     @Column(name="retreat_cost")
-    private String retreatCost;
+    public String retreatCost;
 
     @Column(name="pokemon_type", nullable = true)
-    private String pokemonType;
+    public String pokemonType;
 
     @Column(name="weakness_type", nullable = true)
-    private String weaknessType;
+    public String weaknessType;
 
     @Column(name="resistance_type", nullable = true)
-    private String resistanceType;
+    public String resistanceType;
 
     @Column(name="game_set")
-    private String gameSet;
+    public String gameSet;
 
     @Column(name="regulation_mark")
-    private char regulationMark;
+    public char regulationMark;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = true)
     @JoinColumn(name = "pokemon_owner_id")
-    private StudentEntity pokemonOwner;
+    public StudentEntity pokemonOwner;
 
     @JdbcTypeCode(JSON)
     @Column(name="attack_skills", columnDefinition = "JSON")
-    private List<AttackSkill> skills;
+    public List<AttackSkill> skills;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = true)
     @JoinColumn(name = "evolves_from_id")
-    private CardEntity evolvesFrom;
+    public CardEntity evolvesFrom;
 }

@@ -18,23 +18,23 @@ import java.util.UUID;
 @AllArgsConstructor
 public class StudentEntity implements Serializable {
     @Serial
-    private static final long serialVersionUID = 1L;
+    public static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    public UUID id;
 
     @Column(name = "firstName")
-    private String firstName;
+    public String firstName;
 
     @Column(name = "surName")
-    private String surName;
+    public String surName;
 
     @Column(name = "familyName")
-    private String familyName;
+    public String familyName;
 
     @Column(name = "\"group\"")
-    private String group;
+    public String group;
 
     public String getFatherName() {
         return familyName;

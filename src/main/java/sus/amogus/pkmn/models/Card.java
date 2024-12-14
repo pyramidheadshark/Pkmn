@@ -10,6 +10,8 @@ import java.util.List;
 @Setter
 @Getter
 public class Card implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
@@ -23,23 +25,10 @@ public class Card implements Serializable {
     private char regulationMark;
     private Student pokemonOwner;
     private String number;
-    @Serial
-    private static final long serialVersionUID = 1L;
 
-    public Card()
-    {
+    public Card() {}
 
-    }
-
-    public Card (String name)
-    {
-        this.name = name;
-    }
-
-    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType,
-                Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType,
-                String retreatCost, String gameSet, char regulationMark, Student pokemonOwner, String number)
-    {
+    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner, String number) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
@@ -52,12 +41,25 @@ public class Card implements Serializable {
         this.gameSet = gameSet;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
-        this.number=number;
+        this.number = number;
     }
 
     @Override
     public String toString() {
-        return String.format("\u001b[38;5;111m%s pokemon:\u001b[38;5;15m \n" +
-                "1. ", this.pokemonStage) + this.pokemonStage + "\n2. " + name + "\n3. " + hp + "\n4. " + pokemonType + "\n5. " + evolvesFrom + "\n6. " + skills + "\n7. " + weaknessType + "\n8. " + resistanceType + "\n9. " + retreatCost + "\n10. " + gameSet + "\n11. " + regulationMark + "\n12. " + pokemonOwner + "\n13. "+ number + "\n";
+        return "Card{" +
+                "pokemonStage=" + pokemonStage +
+                ", name='" + name + '\'' +
+                ", hp=" + hp +
+                ", pokemonType=" + pokemonType +
+                ", evolvesFrom=" + evolvesFrom +
+                ", skills=" + skills +
+                ", weaknessType=" + weaknessType +
+                ", resistanceType=" + resistanceType +
+                ", retreatCost='" + retreatCost + '\'' +
+                ", gameSet='" + gameSet + '\'' +
+                ", regulationMark=" + regulationMark +
+                ", pokemonOwner=" + pokemonOwner +
+                ", number=" + number +
+                '}';
     }
 }
