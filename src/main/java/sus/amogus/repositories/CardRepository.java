@@ -7,8 +7,9 @@ import sus.amogus.entities.CardEntity;
 import java.util.List;
 import java.util.UUID;
 
-public interface CardRepository extends JpaRepository<CardEntity, UUID> {
-    @Query(
+public interface CardRepository extends JpaRepository<CardEntity, UUID> { // Интерфейс репозитория для сущности CardEntity с UUID в качестве первичного ключа
+
+    @Query( // JPQL запрос для поиска карт по владельцу (ФИО)
             """
 SELECT card
 FROM CardEntity as card
@@ -17,6 +18,7 @@ AND card.pokemonOwner.surName = :surName
 AND card.pokemonOwner.familyName = :familyName
 """
     )
-    List<CardEntity> findByPokemonOwner(String firstName, String surName, String familyName);
-    List<CardEntity> findByName(String name);
+    List<CardEntity> findByPokemonOwner(String firstName, String surName, String familyName); // Находит список карт по ФИО владельца
+
+    List<CardEntity> findByName(String name); // Находит список карт по имени покемона
 }

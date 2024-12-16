@@ -14,46 +14,46 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/cards")
+@RequestMapping("/api/v1/cards") // Базовый путь для всех запросов к карточкам
 @RequiredArgsConstructor
 public class CardController {
     @Autowired
     private CardService cardService;
 
-    @GetMapping("")
+    @GetMapping("") // Получение всех карточек
     public List<CardEntity> getAllCards() {
         return cardService.getAllCards();
     }
 
-    @GetMapping("/id/{id}")
-    public ResponseEntity<CardEntity> getCardById(@PathVariable UUID id) {
+    @GetMapping("/id/{id}") // Получение карточки по ID
+    public ResponseEntity<CardEntity> getCardById(@PathVariable UUID id) { // @PathVariable извлекает значение из URL
         CardEntity card = cardService.getCardById(id);
-        return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build();
+        return card != null ? ResponseEntity.ok(card) : ResponseEntity.notFound().build(); // Возвращает 200 OK, если карта найдена, 404 Not Found иначе.
     }
 
-    @PostMapping("")
-    public ResponseEntity<CardEntity> createCard(@RequestBody CardEntity card) {
+    @PostMapping("") // Создание новой карточки
+    public ResponseEntity<CardEntity> createCard(@RequestBody CardEntity card) { // @RequestBody десериализует JSON из тела запроса
         CardEntity savedCard = cardService.saveCard(card);
-        return new ResponseEntity<>(savedCard, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedCard, HttpStatus.CREATED); // Возвращает 201 Created с созданной картой
     }
 
-    @PutMapping("/id/{id}")
+    @PutMapping("/id/{id}") // Обновление карточки по ID
     public CardEntity updateCard(@PathVariable UUID id, @RequestBody CardEntity card) {
         return cardService.updateCard(id, card);
     }
 
-    @DeleteMapping("/id/{id}")
+    @DeleteMapping("/id/{id}") // Удаление карточки по ID
     public ResponseEntity<Void> deleteCard(@PathVariable UUID id) {
         cardService.deleteCard(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); // Возвращает 204 No Content
     }
 
-    @GetMapping("/owner")
+    @GetMapping("/owner") // Получение карточек по владельцу
     public List<CardEntity> getCardsByOwner(@RequestBody Student ownerRequest) {
         return cardService.getCardsByOwner(ownerRequest.getFirstName(), ownerRequest.getSurName(), ownerRequest.getFatherName());
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/{name}") // Получение карточек по имени
     public List<CardEntity> getCardsByName(@PathVariable String name) {
         return cardService.getCardsByName(name);
     }
