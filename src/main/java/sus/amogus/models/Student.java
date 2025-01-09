@@ -1,39 +1,35 @@
 package sus.amogus.models;
 
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Builder;
+import lombok.Data;
+import sus.amogus.entities.StudentEntity;
 import java.io.Serial;
 import java.io.Serializable;
 
-@Setter
-@Getter
+@Data
+@Builder
 public class Student implements Serializable {
-    private String firstName;
-    private String surName;
-    private String familyName;
-    private String group;
     @Serial
     private static final long serialVersionUID = 1L;
+    private String surName;
+    private String firstName;
+    private String familyName;
+    private String group;
 
-    public Student()
-    {
-
+    /**
+     *  Преобразует объект StudentEntity в объект Student.
+     *  @param entity объект StudentEntity для преобразования.
+     *  @return Student преобразованный объект Student.
+     */
+    public static Student fromEntity(StudentEntity entity) {
+        if (entity != null) {
+            return Student.builder()
+                    .surName(entity.getSurName())
+                    .firstName(entity.getFirstName())
+                    .familyName(entity.getFamilyName())
+                    .group(entity.getGroup())
+                    .build();
+        }
+        return null;
     }
-
-    public Student(String firstName, String surName, String familyName, String group)
-    {
-        this.firstName = firstName;
-        this.surName = surName;
-        this.familyName = familyName;
-        this.group = group;
-    }
-
-    @Override
-    public String toString()
-    {
-        return firstName + "/" + surName + "/" + familyName + "/" + group;
-    }
-
-    public String getFatherName() { return familyName; }
 }

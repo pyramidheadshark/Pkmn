@@ -1,17 +1,33 @@
 package sus.amogus.services;
 
-import sus.amogus.entities.StudentEntity;
+import sus.amogus.models.Student;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface StudentService {
-    List<StudentEntity> getAllStudents();
-    StudentEntity getStudentById(UUID id);
-    StudentEntity saveStudent(StudentEntity student);
-    StudentEntity updateStudent(UUID id, StudentEntity student);
-    void deleteStudent(UUID id);
-    List<StudentEntity> getStudentsByGroup(String group);
-    StudentEntity getStudentByFullName(String firstName, String surName, String familyName);
-    String getCardImageByName(String cardName); // Новый метод
+    /**
+     *  Возвращает студента по полному имени.
+     *  @param surName фамилия студента.
+     *  @param firstName имя студента.
+     *  @param familyName отчество студента.
+     *  @return Student найденный студент.
+     */
+    Student getStudentBySurNameAndFirstNameAndFamilyName(String surName, String firstName, String familyName);
+    /**
+     *  Возвращает список студентов по группе.
+     *  @param group группа студентов.
+     *  @return List<Student> список студентов.
+     */
+    List<Student> getStudentsByGroup(String group);
+    /**
+     *  Возвращает список всех студентов.
+     *  @return List<Student> список всех студентов.
+     */
+    List<Student> getAllStudents();
+    /**
+     *  Сохраняет студента.
+     *  @param student студент для сохранения.
+     *  @return Student сохраненный студент.
+     */
+    Student saveStudent(Student student);
 }

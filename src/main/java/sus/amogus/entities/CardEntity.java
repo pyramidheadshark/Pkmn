@@ -1,92 +1,106 @@
 package sus.amogus.entities;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import sus.amogus.deserializer.SkillDeserializer;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import sus.amogus.models.AttackSkill;
+import sus.amogus.models.Card;
+import sus.amogus.models.EnergyType;
+import sus.amogus.models.PokemonStage;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import sus.amogus.models.PokemonStage;
-import sus.amogus.models.AttackSkill;
-
-import static org.hibernate.type.SqlTypes.JSON;
-
-
 @Entity
 @Table(name = "cards")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CardEntity implements Serializable {
-
     @Serial
-    public static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public UUID id;
+    private UUID id;
 
-    @Column(name="name")
-    public String name;
-
-    @Column(columnDefinition = "smallint")
-    public short hp;
-
-    @Column(name="cardNumber")
-    public String cardNumber;
-
+    @Column(name = "stage")
     @Enumerated(EnumType.STRING)
-    @Column(name="stage")
-    public PokemonStage pokemonStage;
+    private PokemonStage pokemonStage;
 
-    @Column(name="retreat_cost")
-    public String retreatCost;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name="pokemon_type", nullable = true)
-    public String pokemonType;
+    @Column(name = "hp", nullable = false)
+    private int hp;
 
-    @Column(name="weakness_type", nullable = true)
-    public String weaknessType;
-
-    @Column(name="resistance_type", nullable = true)
-    public String resistanceType;
-
-    @Column(name="game_set")
-    public String gameSet;
-
-    @Column(name="regulation_mark")
-    public char regulationMark;
-
-    @ManyToOne(cascade = CascadeType.ALL, optional = true)
-    @JoinColumn(name = "pokemon_owner_id")
-    public StudentEntity pokemonOwner;
-
-    @JdbcTypeCode(JSON)
-    @Column(name="attack_skills", columnDefinition = "JSON")
-    public List<AttackSkill> skills;
-
-    @ManyToOne(cascade = CascadeType.ALL, optional = true)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "evolves_from_id")
-    public CardEntity evolvesFrom;
+    private CardEntity evolvesFrom;
 
-    @Override
-    public String toString() {
-        return "Card{" +
-                "pokemonStage=" + pokemonStage +
-                ", name='" + name + '\'' +
-                ", hp=" + hp +
-                ", evolvesFrom=" + evolvesFrom +
-                ", skills=" + skills +
-                ", pokemonType=" + pokemonType +
-                ", weaknessType=" + weaknessType +
-                ", resistanceType=" + resistanceType +
-                ", retreatCost='" + retreatCost + '\'' +
-                ", gameSet='" + gameSet + '\'' +
-                ", regulationMark=" + regulationMark +
-                ", owner=" + ((pokemonOwner != null) ? pokemonOwner.toString() : pokemonOwner)+
-                '}';
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "attack_skills")
+    @JsonDeserialize(using = SkillDeserializer.class)
+    private List<AttackSkill> skills;
+
+    @Column(name = "weakness_type")
+    @Enumerated(EnumType.STRING)
+    private EnergyType weaknessType;
+
+    @Column(name = "resistance_type")
+    @Enumerated(EnumType.STRING)
+    private EnergyType resistanceType;
+
+    @Column(name = "retreat_cost")
+    private String retreatCost;
+
+    @Column(name = "game_set")
+    private String gameSet;
+
+    @Column(name = "pokemon_type")
+    @Enumerated(EnumType.STRING)
+    private EnergyType pokemonType;
+
+    @Column(name = "regulation_mark", nullable = false)
+    private char regulationMark;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pokemon_owner_id")
+    private StudentEntity pokemonOwner;
+
+    @Column(name = "card_number")
+    private String number;
+
+    /**
+     *  Преобразует объект Card в объект CardEntity.
+     *  @param card объект Card для преобразования.
+     *  @return CardEntity преобразованный объект CardEntity.
+     */
+    public static CardEntity toEntity(Card card) {
+        if (card != null) {
+            return CardEntity.builder()
+                    .id(UUID.randomUUID())
+                    .pokemonStage(card.getPokemonStage())
+                    .name(card.getName())
+                    .hp(card.getHp())
+                    .pokemonType(card.getPokemonType())
+                    .evolvesFrom(toEntity(card.getEvolvesFrom()))
+                    .skills(card.getSkills())
+                    .weaknessType(card.getWeaknessType())
+                    .resistanceType(card.getResistanceType())
+                    .retreatCost(card.getRetreatCost())
+                    .gameSet(card.getGameSet())
+                    .regulationMark(card.getRegulationMark())
+                    .pokemonOwner(StudentEntity.toEntity(card.getPokemonOwner()))
+                    .number(card.getNumber())
+                    .build();
+        }
+        return null;
     }
 }

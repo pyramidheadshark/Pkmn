@@ -1,4 +1,4 @@
-package sus.amogus.services;
+package sus.amogus.services.impls;
 
 import org.springframework.stereotype.Component;
 import sus.amogus.models.UserDTO;
@@ -11,13 +11,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
+import sus.amogus.services.UserService;
 
 import javax.security.auth.login.CredentialException;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final JdbcUserDetailsManager jdbcUserDetailsManager;
     private final PasswordEncoder passwordEncoder;

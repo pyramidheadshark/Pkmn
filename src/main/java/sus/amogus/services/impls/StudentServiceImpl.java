@@ -1,74 +1,64 @@
 package sus.amogus.services.impls;
 
+import sus.amogus.dao.StudentDao;
+import sus.amogus.entities.StudentEntity;
+import sus.amogus.models.Student;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sus.amogus.dao.StudentDao;
-import sus.amogus.entities.StudentEntity;
 import sus.amogus.services.StudentService;
-import sus.amogus.clients.PokemonCardResponse;
-import sus.amogus.clients.RestClient;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public abstract class StudentServiceImpl implements StudentService {
-    @Autowired
+public class StudentServiceImpl implements StudentService {
+
     private final StudentDao studentDao;
 
-    @Autowired
-    private final RestClient restClient;
-
+    /**
+     *  Возвращает студента по полному имени.
+     *  @param surName фамилия студента.
+     *  @param firstName имя студента.
+     *  @param familyName отчество студента.
+     *  @return Student найденный студент.
+     */
     @Override
-    public List<StudentEntity> getAllStudents() {
-        return studentDao.findAll();
+    public Student getStudentBySurNameAndFirstNameAndFamilyName(String surName, String firstName, String familyName) {
+        StudentEntity studentEntity = studentDao.getBySurNameAndFirstNameAndFamilyName(surName, firstName, familyName);
+        return Student.fromEntity(studentEntity);
     }
 
+    /**
+     *  Возвращает список студентов по группе.
+     *  @param group группа студентов.
+     *  @return List<Student> список студентов.
+     */
     @Override
-    public StudentEntity getStudentById(UUID id) {
-        return studentDao.findById(id).orElse(null);
+    public List<Student> getStudentsByGroup(String group) {
+        return studentDao.getByGroup(group).stream().map(Student::fromEntity).toList();
     }
 
+    /**
+     *  Возвращает список всех студентов.
+     *  @return List<Student> список всех студентов.
+     */
     @Override
-    public StudentEntity saveStudent(StudentEntity student) {
-        if (studentDao.findByFullName(student.getFirstName(), student.getSurName(), student.getFatherName()).isPresent()) {
-            throw new RuntimeException("Student already exists");
+    public List<Student> getAllStudents() {
+        return studentDao.getAll().stream().map(Student::fromEntity).toList();
+    }
+
+    /**
+     *  Сохраняет нового студента.
+     *  @param student данные студента для сохранения.
+     *  @return Student сохраненный студент.
+     *  @throws IllegalArgumentException если студент с таким именем и группой уже существует.
+     */
+    @Override
+    public Student saveStudent(Student student) {
+        if (studentDao.studentExists(student)) {
+            throw new IllegalArgumentException("Студент уже есть в базе данных");
         }
-        return studentDao.save(student);
-    }
-
-    @Override
-    public StudentEntity updateStudent(UUID id, StudentEntity student) {
-        if (!studentDao.findById(id).isPresent()) {
-            throw new RuntimeException("Student not found");
-        }
-        student.setId(id);
-        return studentDao.save(student);
-    }
-
-    @Override
-    public void deleteStudent(UUID id) {
-        studentDao.deleteById(id);
-    }
-
-    @Override
-    public List<StudentEntity> getStudentsByGroup(String group) {
-        return studentDao.findByGroup(group);
-    }
-
-    @Override
-    public StudentEntity getStudentByFullName(String firstName, String surName, String familyName) {
-        return studentDao.findByFullName(firstName, surName, familyName).orElse(null);
-    }
-
-    @Override
-    public String getCardImageByName(String cardName) {
-        PokemonCardResponse response = restClient.getCardByName(cardName);
-        if (response != null) {
-            return response.getData().get(0).getImages().getLarge();
-        }
-        return null;
+        return Student.fromEntity(studentDao.saveStudent(StudentEntity.toEntity(student)));
     }
 }

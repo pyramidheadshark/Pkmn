@@ -1,17 +1,19 @@
 package sus.amogus.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import sus.amogus.entities.CardEntity;
+import lombok.Builder;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 
-@Setter
-@Getter
+@Data
+@Builder
 public class Card implements Serializable {
+
     @Serial
-    private static final long serialVersionUID = 1L;
+    public static final long serialVersionUID = 1L;
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
@@ -26,40 +28,29 @@ public class Card implements Serializable {
     private Student pokemonOwner;
     private String number;
 
-    public Card() {}
-
-    public Card(PokemonStage pokemonStage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills, EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameSet, char regulationMark, Student pokemonOwner, String number) {
-        this.pokemonStage = pokemonStage;
-        this.name = name;
-        this.hp = hp;
-        this.pokemonType = pokemonType;
-        this.evolvesFrom = evolvesFrom;
-        this.skills = skills;
-        this.weaknessType = weaknessType;
-        this.resistanceType = resistanceType;
-        this.retreatCost = retreatCost;
-        this.gameSet = gameSet;
-        this.regulationMark = regulationMark;
-        this.pokemonOwner = pokemonOwner;
-        this.number = number;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "pokemonStage=" + pokemonStage +
-                ", name='" + name + '\'' +
-                ", hp=" + hp +
-                ", pokemonType=" + pokemonType +
-                ", evolvesFrom=" + evolvesFrom +
-                ", skills=" + skills +
-                ", weaknessType=" + weaknessType +
-                ", resistanceType=" + resistanceType +
-                ", retreatCost='" + retreatCost + '\'' +
-                ", gameSet='" + gameSet + '\'' +
-                ", regulationMark=" + regulationMark +
-                ", pokemonOwner=" + pokemonOwner +
-                ", number=" + number +
-                '}';
+    /**
+     * Преобразует объект CardEntity в объект Card.
+     * @param entity объект CardEntity для преобразования.
+     * @return Card преобразованный объект Card.
+     */
+    public static Card fromEntity(CardEntity entity) {
+        if (entity != null) {
+            return Card.builder()
+                    .pokemonStage(entity.getPokemonStage())
+                    .name(entity.getName())
+                    .hp(entity.getHp())
+                    .pokemonType(entity.getPokemonType())
+                    .evolvesFrom(fromEntity(entity.getEvolvesFrom()))
+                    .skills(entity.getSkills())
+                    .weaknessType(entity.getWeaknessType())
+                    .resistanceType(entity.getResistanceType())
+                    .retreatCost(entity.getRetreatCost())
+                    .gameSet(entity.getGameSet())
+                    .regulationMark(entity.getRegulationMark())
+                    .pokemonOwner(Student.fromEntity(entity.getPokemonOwner()))
+                    .number(entity.getNumber())
+                    .build();
+        }
+        return null;
     }
 }

@@ -9,5 +9,4 @@ public class PkmnApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PkmnApplication.class, args);
 	}
-
 }

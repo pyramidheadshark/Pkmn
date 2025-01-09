@@ -1,42 +1,58 @@
 package sus.amogus.entities;
 
+import sus.amogus.models.Student;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "students")
-@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentEntity implements Serializable {
     @Serial
-    public static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public UUID id;
+    private UUID id;
 
-    @Column(name = "firstName")
-    public String firstName;
+    @Column(name="first_name")
+    private String firstName;
 
-    @Column(name = "surName")
-    public String surName;
+    @Column(name="sur_name")
+    private String surName;
 
-    @Column(name = "familyName")
-    public String familyName;
+    @Column(name="family_name")
+    private String familyName;
 
-    @Column(name = "\"group\"")
-    public String group;
+    @Column(name="\"group\"")
+    private String group;
 
-    public String getFatherName() {
-        return familyName;
+    @OneToMany(mappedBy = "pokemonOwner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CardEntity> cards;
+
+    /**
+     *  Преобразует объект Student в объект StudentEntity.
+     *  @param student объект Student для преобразования.
+     *  @return StudentEntity преобразованный объект StudentEntity.
+     */
+    public static StudentEntity toEntity(Student student) {
+        if (student != null) {
+            return StudentEntity.builder()
+                    .id(UUID.randomUUID())
+                    .surName(student.getSurName())
+                    .firstName(student.getFirstName())
+                    .familyName(student.getFamilyName())
+                    .group(student.getGroup())
+                    .build();
+        }
+        return null;
     }
 }

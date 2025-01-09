@@ -1,60 +1,99 @@
 package sus.amogus.services.impls;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.fasterxml.jackson.databind.JsonNode;
 import sus.amogus.dao.CardDao;
 import sus.amogus.entities.CardEntity;
+import sus.amogus.models.Card;
+import sus.amogus.models.Student;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import sus.amogus.services.CardService;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public abstract class CardServiceImpl implements CardService {
+public class CardServiceImpl implements CardService {
+
     private final CardDao cardDao;
+    private final RestTemplate restTemplate;
 
+    /**
+     *  Возвращает список всех карт.
+     *  @return List<Card> список всех карт.
+     */
     @Override
-    public List<CardEntity> getAllCards() {
-        return cardDao.findAll();
+    public List<Card> getAllCards() {
+        return cardDao.getAll().stream().map(Card::fromEntity).toList();
     }
 
+    /**
+     *  Возвращает карту по её имени.
+     *  @param name имя карты.
+     *  @return Card найденная карта.
+     */
     @Override
-    public CardEntity getCardById(UUID id) {
-        return cardDao.findById(id).orElse(null);
+    public Card getCardByName(String name) {
+        return Card.fromEntity(cardDao.getByName(name));
     }
 
+    /**
+     *  Возвращает карту по владельцу покемона.
+     *  @param student владелец покемона.
+     *  @return Card найденная карта.
+     */
     @Override
-    public CardEntity saveCard(CardEntity card) {
-        // Валидация уникальности
-        if (!Objects.isNull(card.getId()) && cardDao.findById(card.getId()).isPresent()) {
-            throw new RuntimeException("Card with this ID already exists.");
+    public Card getCardByPokemonOwner(Student student) {
+        return Card.fromEntity(cardDao.getByPokemonOwnerId(student));
+    }
+
+    /**
+     *  Возвращает карту по её ID.
+     *  @param id ID карты.
+     *  @return Card найденная карта.
+     */
+    @Override
+    public Card getCardById(UUID id) {
+        return Card.fromEntity(cardDao.getById(id));
+    }
+
+    /**
+     *  Сохраняет новую карту.
+     *  @param card данные карты для сохранения.
+     *  @return Card сохраненная карта.
+     *  @throws IllegalArgumentException если карта с таким именем уже существует, или у карты нет владельца.
+     */
+    @Override
+    public Card saveCard(Card card) {
+        if (cardDao.cardExists(card)) {
+            throw new IllegalArgumentException("Карта уже есть в базе данных");
         }
-        return cardDao.save(card);
-    }
-
-    @Override
-    public CardEntity updateCard(UUID id, CardEntity card) {
-        if (cardDao.findById(id).isEmpty()) {
-            throw new RuntimeException("Card not found.");
+        if (card.getPokemonOwner() == null) {
+            throw new IllegalArgumentException("У карты нет владельца");
         }
-        card.setId(id);
-        return cardDao.save(card);
+        return Card.fromEntity(cardDao.saveCard(CardEntity.toEntity(card)));
     }
 
+    /**
+     *  Получает URL изображения покемона с внешнего API.
+     *  @param name имя покемона.
+     *  @param number номер покемона.
+     *  @return String URL изображения покемона или "Pokemon not found", если покемон не найден.
+     */
     @Override
-    public void deleteCard(UUID id) {
-        cardDao.deleteById(id);
-    }
+    public String getPokemonImage(String name, int number) {
+        String url = "https://api.pokemontcg.io/v2/cards?q=name:\"" + name + "\" number:" + number;
 
-    @Override
-    public List<CardEntity> getCardsByOwner(String firstName, String surName, String familyName) {
-        return cardDao.findCardsByOwner(firstName, surName, familyName);
-    }
+        ResponseEntity<JsonNode> response = restTemplate.getForEntity(url, JsonNode.class);
 
-    @Override
-    public List<CardEntity> getCardsByName(String name) {
-        return cardDao.findCardsByName(name);
+        if (response.getBody() != null && response.getBody().has("data")) {
+            JsonNode data = response.getBody().get("data").get(0);
+            return data.path("images").path("large").asText();
+        }
+        return "Pokemon not found";
     }
 }
