@@ -25,9 +25,16 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-    @Autowired
     private final JwtService jwtService;
 
+    /**
+     *  Фильтрует входящие HTTP-запросы для проверки JWT токена.
+     *  @param request HttpServletRequest входящий HTTP-запрос.
+     *  @param response HttpServletResponse ответ.
+     *  @param filterChain FilterChain для передачи запроса следующему фильтру.
+     *  @throws ServletException если возникает ошибка сервлета.
+     *  @throws IOException если возникает ошибка ввода/вывода.
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 

@@ -16,15 +16,25 @@ import javax.security.auth.login.CredentialException;
 @RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
     private final UserService userService;
 
+    /**
+     *  Обрабатывает запрос на аутентификацию пользователя и возвращает JWT.
+     *  @param userDTO данные пользователя для аутентификации.
+     *  @return ResponseEntity с JWT в случае успешной аутентификации.
+     *  @throws CredentialException в случае неверных учетных данных.
+     */
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody UserDTO userDTO) throws CredentialException {
         String jwt = userService.loginUser(userDTO);
         return ResponseEntity.ok(jwt);
     }
 
+    /**
+     *  Обрабатывает запрос на регистрацию нового пользователя.
+     *  @param userDTO данные пользователя для регистрации.
+     *  @return ResponseEntity с сообщением об успешной регистрации.
+     */
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserDTO userDTO) {
         userService.registerUser(userDTO);

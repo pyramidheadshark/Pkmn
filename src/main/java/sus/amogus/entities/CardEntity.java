@@ -77,6 +77,11 @@ public class CardEntity implements Serializable {
     @Column(name = "card_number")
     private String number;
 
+    /**
+     *  Преобразует объект Card в объект CardEntity.
+     *  @param card объект Card для преобразования.
+     *  @return CardEntity преобразованный объект CardEntity.
+     */
     public static CardEntity toEntity(Card card) {
         if (card != null) {
             return CardEntity.builder()

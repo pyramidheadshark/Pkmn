@@ -7,4 +7,3 @@ public enum PokemonStage {
     VSTAR,
     VMAX
 }
-

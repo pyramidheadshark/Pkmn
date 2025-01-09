@@ -13,25 +13,46 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
     private final StudentDao studentDao;
 
+    /**
+     *  Возвращает студента по полному имени.
+     *  @param surName фамилия студента.
+     *  @param firstName имя студента.
+     *  @param familyName отчество студента.
+     *  @return Student найденный студент.
+     */
     @Override
     public Student getStudentBySurNameAndFirstNameAndFamilyName(String surName, String firstName, String familyName) {
         StudentEntity studentEntity = studentDao.getBySurNameAndFirstNameAndFamilyName(surName, firstName, familyName);
         return Student.fromEntity(studentEntity);
     }
 
+    /**
+     *  Возвращает список студентов по группе.
+     *  @param group группа студентов.
+     *  @return List<Student> список студентов.
+     */
     @Override
     public List<Student> getStudentsByGroup(String group) {
         return studentDao.getByGroup(group).stream().map(Student::fromEntity).toList();
     }
 
+    /**
+     *  Возвращает список всех студентов.
+     *  @return List<Student> список всех студентов.
+     */
     @Override
     public List<Student> getAllStudents() {
         return studentDao.getAll().stream().map(Student::fromEntity).toList();
     }
 
+    /**
+     *  Сохраняет нового студента.
+     *  @param student данные студента для сохранения.
+     *  @return Student сохраненный студент.
+     *  @throws IllegalArgumentException если студент с таким именем и группой уже существует.
+     */
     @Override
     public Student saveStudent(Student student) {
         if (studentDao.studentExists(student)) {

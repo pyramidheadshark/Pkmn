@@ -14,20 +14,25 @@ public class Card implements Serializable {
 
     @Serial
     public static final long serialVersionUID = 1L;
-    PokemonStage pokemonStage;
-    String name;
-    int hp;
-    EnergyType pokemonType;
-    public Card evolvesFrom;
-    List<AttackSkill> skills;
-    EnergyType weaknessType;
-    EnergyType resistanceType;
-    String retreatCost;
-    String gameSet;
-    char regulationMark;
-    Student pokemonOwner;
-    String number;
+    private PokemonStage pokemonStage;
+    private String name;
+    private int hp;
+    private EnergyType pokemonType;
+    private Card evolvesFrom;
+    private List<AttackSkill> skills;
+    private EnergyType weaknessType;
+    private EnergyType resistanceType;
+    private String retreatCost;
+    private String gameSet;
+    private char regulationMark;
+    private Student pokemonOwner;
+    private String number;
 
+    /**
+     * Преобразует объект CardEntity в объект Card.
+     * @param entity объект CardEntity для преобразования.
+     * @return Card преобразованный объект Card.
+     */
     public static Card fromEntity(CardEntity entity) {
         if (entity != null) {
             return Card.builder()

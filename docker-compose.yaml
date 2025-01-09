@@ -33,5 +33,6 @@ services:
 volumes:
   pkmn-database_data:
   pkmn-db-migration:
+
 networks:
   pkmn-net:

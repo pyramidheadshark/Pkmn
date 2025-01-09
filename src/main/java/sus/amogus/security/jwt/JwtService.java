@@ -25,7 +25,6 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class JwtService {
 
-    @Autowired
     private final UserDetailsService userDetailsService;
 
     @Value("${token.secret}")
@@ -36,11 +35,20 @@ public class JwtService {
 
     private Algorithm algorithm;
 
+    /**
+     *  Инициализирует алгоритм для подписи JWT токенов.
+     */
     @PostConstruct
     public void init() {
         algorithm = Algorithm.HMAC512(SECRET_KEY);
     }
 
+    /**
+     *  Создает JWT токен.
+     *  @param username имя пользователя.
+     *  @param authority права доступа пользователя.
+     *  @return String JWT токен.
+     */
     public String createToken(String username, GrantedAuthority authority) {
         return JWT.create()
                 .withIssuer("pkmn")
@@ -50,6 +58,11 @@ public class JwtService {
                 .sign(algorithm);
     }
 
+    /**
+     *  Проверяет JWT токен.
+     *  @param jwt JWT токен для проверки.
+     *  @return DecodedJWT декодированный JWT токен в случае успеха, null в случае ошибки.
+     */
     public DecodedJWT verify(String jwt) {
         try {
             JWTVerifier verifier = JWT
@@ -58,8 +71,6 @@ public class JwtService {
                     .build();
 
             DecodedJWT decodedJWT = verifier.verify(jwt);
-
-
 
             if (Objects.isNull(userDetailsService.loadUserByUsername(decodedJWT.getSubject()))) {
                 log.error("Пользователь не найден");

@@ -11,11 +11,16 @@ import java.io.Serializable;
 public class Student implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
-    String surName;
-    String firstName;
-    String familyName;
-    String group;
+    private String surName;
+    private String firstName;
+    private String familyName;
+    private String group;
 
+    /**
+     *  Преобразует объект StudentEntity в объект Student.
+     *  @param entity объект StudentEntity для преобразования.
+     *  @return Student преобразованный объект Student.
+     */
     public static Student fromEntity(StudentEntity entity) {
         if (entity != null) {
             return Student.builder()

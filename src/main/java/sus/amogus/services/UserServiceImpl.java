@@ -19,15 +19,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService{
 
-    @Autowired
     private final JdbcUserDetailsManager jdbcUserDetailsManager;
-
-    @Autowired
     private final PasswordEncoder passwordEncoder;
-
-    @Autowired
     private final JwtService jwtService;
 
+    /**
+     *  Аутентифицирует пользователя и возвращает JWT токен.
+     *  @param userDTO данные пользователя для аутентификации.
+     *  @return String JWT токен.
+     *  @throws CredentialException если аутентификация не удалась.
+     */
     @Override
     public String loginUser(UserDTO userDTO) throws CredentialException {
         if (!jdbcUserDetailsManager.userExists(userDTO.getUsername())) {
@@ -37,10 +38,14 @@ public class UserServiceImpl implements UserService{
         if (!passwordEncoder.matches(userDTO.getPassword(), userDetails.getPassword())) {
             throw new CredentialException("Данные пользователя неправильные");
         }
-
         return jwtService.createToken(userDetails.getUsername(), userDetails.getAuthorities().iterator().next());
     }
 
+    /**
+     *  Регистрирует нового пользователя.
+     *  @param userDTO данные пользователя для регистрации.
+     *  @throws UsernameNotFoundException если пользователь с таким именем уже существует.
+     */
     @Override
     public void registerUser(UserDTO userDTO) {
         if (jdbcUserDetailsManager.userExists(userDTO.getUsername())) {
@@ -48,7 +53,6 @@ public class UserServiceImpl implements UserService{
         }
         String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
         UserDTO user = new UserDTO(userDTO.getUsername(), encodedPassword, List.of(new SimpleGrantedAuthority("ROLE_USER")));
-
         jdbcUserDetailsManager.createUser(user);
     }
 }

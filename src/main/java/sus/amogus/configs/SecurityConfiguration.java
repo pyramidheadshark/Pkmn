@@ -18,12 +18,15 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
-    @Autowired
     private final UserDetailsService jdbcUserDetailsManager;
-
-    @Autowired
     private final JwtFilter jwtFilter;
 
+    /**
+     *  Конфигурирует цепочку фильтров безопасности для обработки HTTP-запросов.
+     *  @param httpSecurity объект HttpSecurity для настройки безопасности.
+     *  @return SecurityFilterChain настроенная цепочка фильтров безопасности.
+     *  @throws Exception в случае ошибок при настройке безопасности.
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(
@@ -45,5 +48,4 @@ public class SecurityConfiguration {
         httpSecurity.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
     }
-
 }

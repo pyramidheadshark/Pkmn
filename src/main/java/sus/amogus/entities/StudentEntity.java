@@ -38,6 +38,11 @@ public class StudentEntity implements Serializable {
     @OneToMany(mappedBy = "pokemonOwner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CardEntity> cards;
 
+    /**
+     *  Преобразует объект Student в объект StudentEntity.
+     *  @param student объект Student для преобразования.
+     *  @return StudentEntity преобразованный объект StudentEntity.
+     */
     public static StudentEntity toEntity(Student student) {
         if (student != null) {
             return StudentEntity.builder()

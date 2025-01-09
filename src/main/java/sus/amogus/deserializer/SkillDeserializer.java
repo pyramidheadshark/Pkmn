@@ -11,6 +11,14 @@ import java.io.IOException;
 import java.util.Optional;
 
 public class SkillDeserializer extends JsonDeserializer<AttackSkill> {
+    /**
+     *  Десериализует JSON в объект AttackSkill.
+     *  @param p JsonParser, используемый для чтения JSON.
+     *  @param ctxt DeserializationContext, предоставляющий контекст для десериализации.
+     *  @return AttackSkill объект, созданный из JSON.
+     *  @throws IOException если возникает ошибка ввода/вывода.
+     *  @throws JacksonException если возникает ошибка при парсинге JSON.
+     */
     @Override
     public AttackSkill deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JacksonException {
 

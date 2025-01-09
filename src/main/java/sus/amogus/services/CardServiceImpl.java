@@ -18,32 +18,54 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CardServiceImpl implements CardService {
 
-    @Autowired
     private final CardDao cardDao;
-
-    @Autowired
     private final RestTemplate restTemplate;
 
+    /**
+     *  Возвращает список всех карт.
+     *  @return List<Card> список всех карт.
+     */
     @Override
     public List<Card> getAllCards() {
         return cardDao.getAll().stream().map(Card::fromEntity).toList();
     }
 
+    /**
+     *  Возвращает карту по её имени.
+     *  @param name имя карты.
+     *  @return Card найденная карта.
+     */
     @Override
     public Card getCardByName(String name) {
         return Card.fromEntity(cardDao.getByName(name));
     }
 
+    /**
+     *  Возвращает карту по владельцу покемона.
+     *  @param student владелец покемона.
+     *  @return Card найденная карта.
+     */
     @Override
     public Card getCardByPokemonOwner(Student student) {
         return Card.fromEntity(cardDao.getByPokemonOwnerId(student));
     }
 
+    /**
+     *  Возвращает карту по её ID.
+     *  @param id ID карты.
+     *  @return Card найденная карта.
+     */
     @Override
     public Card getCardById(UUID id) {
         return Card.fromEntity(cardDao.getById(id));
     }
 
+    /**
+     *  Сохраняет новую карту.
+     *  @param card данные карты для сохранения.
+     *  @return Card сохраненная карта.
+     *  @throws IllegalArgumentException если карта с таким именем уже существует, или у карты нет владельца.
+     */
     @Override
     public Card saveCard(Card card) {
         if (cardDao.cardExists(card)) {
@@ -55,6 +77,12 @@ public class CardServiceImpl implements CardService {
         return Card.fromEntity(cardDao.saveCard(CardEntity.toEntity(card)));
     }
 
+    /**
+     *  Получает URL изображения покемона с внешнего API.
+     *  @param name имя покемона.
+     *  @param number номер покемона.
+     *  @return String URL изображения покемона или "Pokemon not found", если покемон не найден.
+     */
     @Override
     public String getPokemonImage(String name, int number) {
         String url = "https://api.pokemontcg.io/v2/cards?q=name:\"" + name + "\" number:" + number;
@@ -67,7 +95,4 @@ public class CardServiceImpl implements CardService {
         }
         return "Pokemon not found";
     }
-
-
-
 }
